@@ -14,6 +14,31 @@ const cerateCar = async (req: Request, res: Response) => {
   });
 };
 
+const getAllCar = async (req: Request, res: Response) => {
+  const result = await CarServices.getAllCar();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Cars retrieved successfully',
+    data: result,
+  });
+};
+
+const getSingleCar = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await CarServices.getSingleCar(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'A Car retrieved successfully',
+    data: result,
+  });
+};
+
 export const CarControllers = {
   cerateCar,
+  getAllCar,
+  getSingleCar,
 };

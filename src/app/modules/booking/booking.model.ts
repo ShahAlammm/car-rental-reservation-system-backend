@@ -1,19 +1,24 @@
 import { Schema, model } from 'mongoose';
 import { BookingModel, TBooking } from './booking.interface';
 
-const bookingSchema = new Schema<TBooking, BookingModel>({
-  date: { type: Date, required: true },
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  car: { type: Schema.Types.ObjectId, ref: 'Car', required: true },
-  startTime: { type: String, required: true },
-  endTime: { type: String, required: true },
-  totalCost: { type: String, default: '0' },
-  isBooked: {
-    type: String,
-    enum: ['unconfirmed', 'confirmed'],
-    default: 'unconfirmed',
+const bookingSchema = new Schema<TBooking, BookingModel>(
+  {
+    date: { type: Date, required: true, default: Date.now },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    car: { type: Schema.Types.ObjectId, ref: 'Car', required: true },
+    startTime: { type: String, required: true },
+    endTime: { type: String, required: true },
+    totalCost: { type: Number, default: 0 },
+    isBooked: {
+      type: String,
+      enum: ['unconfirmed', 'confirmed'],
+      default: 'unconfirmed',
+    },
   },
-});
+  {
+    timestamps: true,
+  },
+);
 
 // Static method to calculate total cost
 // bookingSchema.statics.calculateTotalCost = function (

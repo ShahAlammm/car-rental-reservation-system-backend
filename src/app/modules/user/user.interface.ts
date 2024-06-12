@@ -1,6 +1,3 @@
-import { Model } from "mongoose";
-
-
 export type TUser = {
   id: string;
   name: string;
@@ -11,4 +8,3 @@ export type TUser = {
   phone: string;
   address: string;
 };
-export interface UserModel extends Model<TUser> {}
