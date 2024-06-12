@@ -1,13 +1,15 @@
 import { Request, Response } from 'express';
-import Car from './car.model';
 import { CarServices } from './car.service';
+import sendResponse from '../../utils/sendResponse';
+import httpStatus from 'http-status';
 
 const cerateCar = async (req: Request, res: Response) => {
   const result = await CarServices.createCar(req.body);
 
-  res.json({
+  sendResponse(res, {
+    statusCode: httpStatus.CREATED,
     success: true,
-    message: 'Car is created successfully !',
+    message: 'Car created successfully',
     data: result,
   });
 };

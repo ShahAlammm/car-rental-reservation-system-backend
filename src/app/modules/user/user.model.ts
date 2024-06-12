@@ -4,11 +4,6 @@ import { TUser} from './user.interface';
 
 const userSchema = new Schema<TUser>(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     name: {
       type: String,
       required: [true, 'Name is required'],
