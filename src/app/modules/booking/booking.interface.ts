@@ -12,6 +12,5 @@ export type TBooking = {
 
   // Static methods for the Booking model
   export interface BookingModel extends Model<TBooking> {
-    // eslint-disable-next-line no-unused-vars
-    calculateTotalCost(booking: TBooking): string;
+    
   }

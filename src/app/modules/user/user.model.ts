@@ -1,24 +1,6 @@
 import { Schema, model } from 'mongoose';
-import { TUser, TUserName } from './user.interface';
+import { TUser} from './user.interface';
 
-const userNameSchema = new Schema<TUserName>({
-  firstName: {
-    type: String,
-    required: [true, 'First Name is required'],
-    trim: true,
-    max_length: [20, 'Name can not be more than 20 characters'],
-  },
-  middleName: {
-    type: String,
-    trim: true,
-  },
-  lastName: {
-    type: String,
-    trim: true,
-    required: [true, 'Last Name is required'],
-    max_length: [20, 'Name can not be more than 20 characters'],
-  },
-});
 
 const userSchema = new Schema<TUser>(
   {
@@ -28,7 +10,7 @@ const userSchema = new Schema<TUser>(
       unique: true,
     },
     name: {
-      type: userNameSchema,
+      type: String,
       required: [true, 'Name is required'],
     },
     email: {

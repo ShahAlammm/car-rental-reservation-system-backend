@@ -1,14 +1,8 @@
 
 
-export type TUserName = {
-  firstName: string;
-  middleName: string;
-  lastName: string;
-};
-
 export type TUser = {
   id: string;
-  name: TUserName;
+  name: string;
   email: string;
   needsPasswordChange: boolean;
   role: 'user' | 'admin';
