@@ -4,6 +4,7 @@ import { BookingRoutes } from './app/modules/booking/booking.router';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import notFound from './app/middlewares/notFound';
 import { AuthRoutes } from './app/modules/auth/auth.route';
+import { UserRoutes } from './app/modules/user/user.router';
 
 const app = express();
 //parsers
@@ -11,7 +12,8 @@ app.use(express.json());
 
 
 
-app.use("/api/auth", AuthRoutes);
+// app.use("/api/auth", AuthRoutes);
+app.use('/api/users', UserRoutes);
 app.use('/api/cars', CarRoutes);
 app.use('/api/bookings', BookingRoutes);
 
