@@ -1,8 +1,10 @@
-import express from 'express';
-import { UserControllers } from './user.controller';
+import { Router } from 'express';
+import { signIn, signUp } from './user.controller';
 
-const router = express.Router();
 
-router.post('/', UserControllers.cerateUser);
+const router = Router();
 
-export const UserRoutes = router;
+router.post('/signup', signUp);
+router.post('signin', signIn);
+
+export default router;
