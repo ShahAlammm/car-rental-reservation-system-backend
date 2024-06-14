@@ -5,22 +5,20 @@ import { UserServices } from './user.service';
 import catchAsync from '../../utils/catchAsync';
 import AppError from '../../errors/AppError';
 
-
 //Created
-const cerateUser = async (req: Request, res: Response) => {
+const cerateAdmin = async (req: Request, res: Response) => {
   const result = await UserServices.createUser(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
-    message: 'User registered successfully',
+    message: 'Admin registered successfully',
     data: result,
   });
 };
 
-
 //Get single
-const getSingleCar = catchAsync(async (req: Request, res: Response) => {
+const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const { userId } = req.params;
   const result = await UserServices.getSingleUser(userId);
   if (!result) {
@@ -33,8 +31,6 @@ const getSingleCar = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
-
 
 //Update
 const updateUser = catchAsync(async (req: Request, res: Response) => {
@@ -49,11 +45,8 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-
-
-
 export const UserControllers = {
-  cerateUser,
-  getSingleCar,
+  cerateAdmin,
+  getSingleUser,
   updateUser,
 };

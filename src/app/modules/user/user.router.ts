@@ -6,11 +6,11 @@ import { UserValidations } from './user.validation';
 const router = express.Router();
 
 router.post(
-  '/create-user',
+  '/create-admin',
   validateRequest(UserValidations.createUserValidations),
-  UserControllers.cerateUser,
+  UserControllers.cerateAdmin,
 );
-router.get('/:userId', UserControllers.getSingleCar);
+router.get('/:userId', UserControllers.getSingleUser);
 
 
 router.put(
