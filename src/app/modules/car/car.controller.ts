@@ -3,7 +3,6 @@ import { CarServices } from './car.service';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
-import notFound from '../../middlewares/notFound';
 import AppError from '../../errors/AppError';
 
 const cerateCar = async (req: Request, res: Response) => {
@@ -19,7 +18,9 @@ const cerateCar = async (req: Request, res: Response) => {
 
 const getAllCar = async (req: Request, res: Response) => {
   const result = await CarServices.getAllCar();
-
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Cars API not found');
+  }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
