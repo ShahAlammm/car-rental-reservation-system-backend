@@ -1,7 +1,14 @@
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 import { TUser } from './user.interface';
 import bcryptjs from 'bcryptjs';
 import config from '../../config';
+
+
+interface UserDocument {
+  _id: Types.ObjectId;
+  password: string;
+}
+
 
 const userSchema = new Schema<TUser>(
   {
@@ -34,7 +41,7 @@ const userSchema = new Schema<TUser>(
 );
 
 userSchema.pre('save', async function (next) {
-  const user = this;
+  const user = this as UserDocument;
 
   user.password = await bcryptjs.hash(user.password, Number(config.salt_round));
   next();

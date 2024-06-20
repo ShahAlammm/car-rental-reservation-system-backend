@@ -7,6 +7,7 @@ import AppError from '../../errors/AppError';
 
 const cerateBooking = async (req: Request, res: Response) => {
   const result = await BookingServices.createBooking(req.body);
+  console.log(result);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -24,7 +25,38 @@ const getAllBooking = async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cars retrieved successfully',
+    message: 'My Bookings retrieved successfully',
+    data: result,
+  });
+};
+
+const getSingleBooking = async (req: Request, res: Response) => {
+  const { bookingId } = req.params;
+
+  const result = await BookingServices.getSingleBooking(bookingId);
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Cars API not found');
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking retrieved successfully',
+    data: result,
+  });
+};
+
+const updateBooking = async (req: Request, res: Response) => {
+
+  const { bookingId } = req.params;
+
+  const result = await BookingServices.updateBooking(bookingId, req.body);
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Booking API not found');
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking update successfully',
     data: result,
   });
 };
@@ -32,4 +64,6 @@ const getAllBooking = async (req: Request, res: Response) => {
 export const BookingControllers = {
   cerateBooking,
   getAllBooking,
+  getSingleBooking,
+  updateBooking,
 };

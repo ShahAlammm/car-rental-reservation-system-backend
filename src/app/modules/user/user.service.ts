@@ -3,7 +3,6 @@ import AppError from '../../errors/AppError';
 import { TUser } from './user.interface';
 import { User } from './user.model';
 
-
 //Create User
 const createAdmin = async (payload: TUser) => {
   const result = await User.create(payload);
@@ -12,7 +11,6 @@ const createAdmin = async (payload: TUser) => {
   }
   return result;
 };
-
 
 // Get single
 const getSingleUser = async (id: string) => {

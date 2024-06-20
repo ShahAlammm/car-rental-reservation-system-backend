@@ -3,8 +3,10 @@ import AppError from '../../errors/AppError';
 import { TBooking } from './booking.interface';
 import Booking from './booking.model';
 
+
 export const createBooking = async (payload: TBooking): Promise<TBooking> => {
   const newBooking = await Booking.create(payload);
+
   return newBooking;
 };
 
@@ -19,9 +21,11 @@ const getSingleBooking = async (id: string) => {
 };
 
 const updateBooking = async (id: string, payload: Partial<TBooking>) => {
-  const { ...remainingCarData } = payload;
+
+  const { ...remainingBookingData } = payload;
+
   const modifiedUpdatedData: Record<string, unknown> = {
-    ...remainingCarData,
+    ...remainingBookingData,
   };
 
   const result = await Booking.findByIdAndUpdate(id, modifiedUpdatedData, {
@@ -35,6 +39,8 @@ const updateBooking = async (id: string, payload: Partial<TBooking>) => {
 
   return result;
 };
+
+
 
 export const BookingServices = {
   createBooking,
