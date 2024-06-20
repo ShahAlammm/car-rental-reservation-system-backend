@@ -5,7 +5,15 @@ import { User } from '../user/user.model';
 import { TLoginUser } from './auth.interface';
 import jwt from 'jsonwebtoken';
 import { isPasswordMatched } from './auth.utils';
+import { TBooking } from '../booking/booking.interface';
+import Booking from '../booking/booking.model';
 
+
+
+const createBooking = async (payload: TBooking) => {
+  const result = await Booking.create(payload);
+  return result;
+};
 
 //sign up
 const signUp = async (payload: TUser): Promise<any> => {

@@ -7,7 +7,7 @@ import AppError from '../../errors/AppError';
 
 //Created
 const cerateAdmin = async (req: Request, res: Response) => {
-  const result = await UserServices.createUser(req.body);
+  const result = await UserServices.createAdmin(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,

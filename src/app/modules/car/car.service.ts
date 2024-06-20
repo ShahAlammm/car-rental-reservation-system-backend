@@ -9,6 +9,7 @@ const createCar = async (payload: TCar) => {
   const result = await Car.create(payload);
   return result;
 };
+
 const getAllCar = async () => {
   const result = await Car.find(); //populate
   return result;

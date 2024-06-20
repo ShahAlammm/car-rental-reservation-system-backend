@@ -4,8 +4,8 @@ import { TUser } from './user.interface';
 import { User } from './user.model';
 
 
-//Created
-const createUser = async (payload: TUser) => {
+//Create User
+const createAdmin = async (payload: TUser) => {
   const result = await User.create(payload);
   if (!result) {
     throw new AppError(httpStatus.FORBIDDEN, 'User not Created');
@@ -22,7 +22,6 @@ const getSingleUser = async (id: string) => {
   }
   return result;
 };
-
 
 //update
 const updateUser = async (_id: string, payload: Partial<TUser>) => {
@@ -44,7 +43,7 @@ const updateUser = async (_id: string, payload: Partial<TUser>) => {
 };
 
 export const UserServices = {
-  createUser,
+  createAdmin,
   getSingleUser,
   updateUser,
 };
