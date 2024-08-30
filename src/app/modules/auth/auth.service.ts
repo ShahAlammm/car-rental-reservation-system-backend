@@ -1,22 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import config from '../../config';
 import { USER_Role } from '../user/user.constants';
 import { TUser } from '../user/user.interface';
 import { User } from '../user/user.model';
 import { TLoginUser } from './auth.interface';
 import jwt from 'jsonwebtoken';
+// import { TBooking } from '../booking/booking.interface';
+// import Booking from '../booking/booking.model';
 import { isPasswordMatched } from './auth.utils';
-import { TBooking } from '../booking/booking.interface';
-import Booking from '../booking/booking.model';
 
 
 
-const createBooking = async (payload: TBooking) => {
-  const result = await Booking.create(payload);
-  return result;
-};
+// const createBooking = async (payload: TBooking) => {
+//   const result = await Booking.create(payload);
+//   return result;
+// };
 
 //sign up
-const signUp = async (payload: TUser): Promise<any> => {
+const register = async (payload: TUser): Promise<any> => {
 
   const user = await User.findOne({ email: payload.email });
 
@@ -35,7 +36,7 @@ const signUp = async (payload: TUser): Promise<any> => {
 
 
 //sign in
-const signIn = async (payload: TLoginUser) => {
+const login = async (payload: TLoginUser) => {
   const user = await User.findOne({ email: payload.email }).select('+password');
 
   if (!user) {
@@ -75,6 +76,6 @@ const signIn = async (payload: TLoginUser) => {
 };
 
 export const AuthServices = {
-  signUp,
-  signIn,
+ register,
+ login,
 };

@@ -1,13 +1,8 @@
-import { Schema, Types, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { TUser } from './user.interface';
-import bcryptjs from 'bcryptjs';
 import config from '../../config';
+import bcryptjs from 'bcryptjs';
 
-
-interface UserDocument {
-  _id: Types.ObjectId;
-  password: string;
-}
 
 
 const userSchema = new Schema<TUser>(
@@ -30,9 +25,8 @@ const userSchema = new Schema<TUser>(
       required: true,
       select: 0,
     },
-    address: {
+    phone: {
       type: String,
-      required: [true, 'Present address is required'],
     },
   },
   {
@@ -41,7 +35,8 @@ const userSchema = new Schema<TUser>(
 );
 
 userSchema.pre('save', async function (next) {
-  const user = this as UserDocument;
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
+  const user = this;
 
   user.password = await bcryptjs.hash(user.password, Number(config.salt_round));
   next();

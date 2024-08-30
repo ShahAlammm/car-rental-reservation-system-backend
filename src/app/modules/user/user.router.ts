@@ -10,7 +10,7 @@ const router = express.Router();
 router.post(
   '/create-admin',
   validateRequest(UserValidations.createUserValidations),
-  auth(USER_Role.admin),
+  auth(USER_Role.admin, USER_Role.user),
   UserControllers.cerateAdmin,
 );
 router.get('/:userId', UserControllers.getSingleUser);

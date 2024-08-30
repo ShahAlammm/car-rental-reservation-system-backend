@@ -7,12 +7,11 @@ import AppError from '../../errors/AppError';
 
 const cerateBooking = async (req: Request, res: Response) => {
   const result = await BookingServices.createBooking(req.body);
-  console.log(result);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Car created successfully',
+    message: 'Booking successfully',
     data: result,
   });
 };

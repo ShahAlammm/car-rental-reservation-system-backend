@@ -4,8 +4,8 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { AuthServices } from './auth.service';
 
-const signUp = catchAsync(async (req, res) => {
-  const result = await AuthServices.signUp(req.body);
+const register = catchAsync(async (req, res) => {
+  const result = await AuthServices.register(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
@@ -15,8 +15,8 @@ const signUp = catchAsync(async (req, res) => {
   });
 });
 
-const signIn = catchAsync(async (req, res) => {
-  const { accessToken, refreshToken } = await AuthServices.signIn(req.body);
+const login = catchAsync(async (req, res) => {
+  const { accessToken, refreshToken } = await AuthServices.login(req.body);
 
   res.cookie('refreshToken', refreshToken, {
     httpOnly: true,
@@ -34,6 +34,6 @@ const signIn = catchAsync(async (req, res) => {
 });
 
 export const authControllers = {
-  signUp,
-  signIn,
+  register,
+  login,
 };

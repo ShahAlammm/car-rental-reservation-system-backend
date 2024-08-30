@@ -4,11 +4,10 @@ import { USER_Role } from './user.constants';
 const createUserValidations = z.object({
   body: z.object({
     name: z.string(),
-    role: z.nativeEnum(USER_Role).default(USER_Role.admin),
+    role: z.nativeEnum(USER_Role).default(USER_Role.user),
     email: z.string().email(),
     password: z.string(),
     phone: z.string(),
-    address: z.string(),
   }),
 });
 
@@ -19,7 +18,6 @@ const updateUserValidations = z.object({
     email: z.string().email().optional(),
     password: z.string().optional(),
     phone: z.string().optional(),
-    address: z.string().optional(),
   }),
 });
 
