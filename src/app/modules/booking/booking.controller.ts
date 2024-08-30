@@ -33,6 +33,7 @@ const getSingleBooking = async (req: Request, res: Response) => {
   const { bookingId } = req.params;
 
   const result = await BookingServices.getSingleBooking(bookingId);
+
   if (!result) {
     throw new AppError(httpStatus.NOT_FOUND, 'Cars API not found');
   }
@@ -45,7 +46,6 @@ const getSingleBooking = async (req: Request, res: Response) => {
 };
 
 const updateBooking = async (req: Request, res: Response) => {
-
   const { bookingId } = req.params;
 
   const result = await BookingServices.updateBooking(bookingId, req.body);

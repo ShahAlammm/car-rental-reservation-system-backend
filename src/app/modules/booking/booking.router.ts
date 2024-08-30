@@ -5,13 +5,17 @@ import { BookingValidations } from './booking.validation';
 
 const router = express.Router();
 
-router.post('/',
-    validateRequest(BookingValidations.bookingValidation),
-    BookingControllers.cerateBooking);
+router.post(
+  '/',
+  validateRequest(BookingValidations.bookingValidation),
+  BookingControllers.cerateBooking,
+);
 router.get('/', BookingControllers.getAllBooking);
 router.get('/:bookingId', BookingControllers.getSingleBooking);
-router.put('/:bookingId',
-    validateRequest(BookingValidations.updateBookingValidation),
-    BookingControllers.updateBooking);
+router.put(
+  '/:bookingId',
+  validateRequest(BookingValidations.updateBookingValidation),
+  BookingControllers.updateBooking,
+);
 
 export const BookingRoutes = router;

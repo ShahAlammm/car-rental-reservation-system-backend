@@ -1,3 +1,4 @@
+import { Model } from 'mongoose';
 import { USER_Role } from './user.constants';
 
 export type TUser = {
@@ -7,3 +8,4 @@ export type TUser = {
   password: string;
   phone: string;
 };
+export interface UserModel extends Model<TUser> {}
