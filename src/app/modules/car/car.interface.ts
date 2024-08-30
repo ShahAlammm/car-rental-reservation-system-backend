@@ -8,6 +8,8 @@ export type TCar = {
   status: 'available' | 'unavailable';
   features: string[];
   pricePerHour: number;
+  image: string;
+  category: string;
   isDeleted: boolean;
 };
 

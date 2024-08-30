@@ -5,7 +5,10 @@ import Car from '../car/car.model';
 const bookingSchema = new Schema<TBooking, BookingModel>(
   {
     _id: { type: String, required: true },
-    date: { type: String, required: true },
+    startDate: { type: String, required: true },
+    endDate: { type: String, required: true },
+    pickupLocation: { type: String, required: true },
+    dropOffLocation: { type: String, required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     car: { type: Schema.Types.ObjectId, ref: 'Car' },
     startTime: { type: String, required: true },

@@ -2,7 +2,10 @@ import { Model, Types } from 'mongoose';
 
 export type TBooking = {
   _id: string;
-  date: string;
+  startDate: string;
+  endDate: string;
+  pickupLocation: string;
+  dropOffLocation: string;
   user: Types.ObjectId;
   car: Types.ObjectId;
   startTime: string;
