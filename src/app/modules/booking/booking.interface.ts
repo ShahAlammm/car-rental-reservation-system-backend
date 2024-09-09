@@ -10,7 +10,7 @@ export type TBooking = {
   startTime: string;
   endTime: string;
   totalCost: number;
-  isBooked: 'unconfirmed' | 'confirmed';
+  isBooked: 'pending' | 'confirmed';
 };
 
 // Static methods for the Booking model

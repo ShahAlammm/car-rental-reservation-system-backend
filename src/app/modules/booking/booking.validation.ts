@@ -11,7 +11,7 @@ const bookingValidation = z.object({
     startTime: z.string(),
     endTime: z.string(),
     totalCost: z.number(),
-    isBooked: z.enum(['unconfirmed', 'confirmed']),
+    isBooked: z.enum(['pending', 'confirmed']),
   }),
 });
 
@@ -26,7 +26,7 @@ const updateBookingValidation = z.object({
     startTime: z.string().optional(),
     endTime: z.string().optional(),
     totalCost: z.number().optional(),
-    isBooked: z.enum(['unconfirmed', 'confirmed']).optional(),
+    isBooked: z.enum(['pending', 'confirmed']).optional(),
   }),
 });
 

@@ -4,6 +4,7 @@ import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 import { BookingServices } from './booking.service';
 import AppError from '../../errors/AppError';
+import catchAsync from '../../utils/catchAsync';
 
 const cerateBooking = async (req: Request, res: Response) => {
   const result = await BookingServices.createBooking(req.body);
@@ -60,9 +61,21 @@ const updateBooking = async (req: Request, res: Response) => {
   });
 };
 
+const deleteBooking = catchAsync(async (req: Request, res: Response) => {
+  const { bookingId } = req.params;
+  const result = await BookingServices.deleteBooking(bookingId);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking Deleted successfully',
+    data: result,
+  });
+});
+
 export const BookingControllers = {
   cerateBooking,
   getAllBooking,
   getSingleBooking,
   updateBooking,
+  deleteBooking,
 };

@@ -40,6 +40,25 @@ const updateBooking = async (id: string, payload: Partial<TBooking>) => {
   return result;
 };
 
+const deleteBooking = async (id: string) => {
+
+
+  try {
+
+
+    const deletedBooking = await Booking.findByIdAndDelete(id);
+
+    if (!deletedBooking) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete car');
+    }
+
+  } catch (err) {
+    throw new AppError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'Failed to delete booking',
+    );
+  }
+};
 
 
 export const BookingServices = {
@@ -47,4 +66,5 @@ export const BookingServices = {
   getAllBookings,
   getSingleBooking,
   updateBooking,
+  deleteBooking
 };

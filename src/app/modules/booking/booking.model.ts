@@ -16,8 +16,8 @@ const bookingSchema = new Schema<TBooking, BookingModel>(
     totalCost: { type: Number, default: 0 },
     isBooked: {
       type: String,
-      enum: ['unconfirmed', 'confirmed'],
-      default: 'unconfirmed',
+      enum: ['pending', 'confirmed'],
+      default: 'pending',
     },
   },
   {

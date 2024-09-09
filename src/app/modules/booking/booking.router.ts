@@ -17,5 +17,6 @@ router.put(
   validateRequest(BookingValidations.updateBookingValidation),
   BookingControllers.updateBooking,
 );
+router.delete('/:bookingId', BookingControllers.deleteBooking);
 
 export const BookingRoutes = router;
