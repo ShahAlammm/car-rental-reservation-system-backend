@@ -26,9 +26,9 @@ const carSchema = new Schema<TCar, CarModel>(
   },
 );
 
-// carSchema.statics.isCarExists = async function (id: string): Promise<TCar | null> {
-//     return this.findById(id).where({ isDeleted: false }).exec();
-//   };
+carSchema.statics.isCarExists = async function (id: string): Promise<TCar | null> {
+    return this.findById(id).where({ isDeleted: false }).exec();
+  };
 
 // Create and export the Car model
 const Car = model<TCar, CarModel>('Car', carSchema);

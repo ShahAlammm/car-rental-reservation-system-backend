@@ -3,7 +3,7 @@ import { TCar } from './car.interface';
 import Car from './car.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
-import { User } from '../user/user.model';
+
 
 const createCar = async (payload: TCar) => {
   const result = await Car.create(payload);

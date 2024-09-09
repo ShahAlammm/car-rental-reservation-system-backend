@@ -12,8 +12,21 @@ const createAdmin = async (payload: TUser) => {
   return result;
 };
 
+const getAllUser = async () => {
+  const result = await User.find(); //populate
+  return result;
+};
+
 // Get single
-const getSingleUser = async (id: string) => {
+const getSingleUser = async (email: string) => {
+  const result = await User.findOne({ email });
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  }
+  return result;
+};
+// Get single By Id
+const getSingleUserById = async (id: string) => {
   const result = await User.findById(id);
   if (!result) {
     throw new AppError(httpStatus.NOT_FOUND, 'User not found');
@@ -43,5 +56,7 @@ const updateUser = async (_id: string, payload: Partial<TUser>) => {
 export const UserServices = {
   createAdmin,
   getSingleUser,
+  getSingleUserById,
   updateUser,
+  getAllUser,
 };

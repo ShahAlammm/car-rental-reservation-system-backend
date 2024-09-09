@@ -17,10 +17,39 @@ const cerateAdmin = async (req: Request, res: Response) => {
   });
 };
 
+// Get all user
+
+const getAllUser = async (req: Request, res: Response) => {
+  const result = await UserServices.getAllUser();
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Cars API not found');
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Cars retrieved successfully',
+    data: result,
+  });
+};
+
 //Get single
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
+  const { email } = req.params;
+  const result = await UserServices.getSingleUser(email);
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User API not found');
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'A user retrieved successfully',
+    data: result,
+  });
+});
+//Get single
+const getSingleUserById = catchAsync(async (req: Request, res: Response) => {
   const { userId } = req.params;
-  const result = await UserServices.getSingleUser(userId);
+  const result = await UserServices.getSingleUserById(userId);
   if (!result) {
     throw new AppError(httpStatus.NOT_FOUND, 'User API not found');
   }
@@ -47,6 +76,8 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 
 export const UserControllers = {
   cerateAdmin,
+  getAllUser,
   getSingleUser,
+  getSingleUserById,
   updateUser,
 };

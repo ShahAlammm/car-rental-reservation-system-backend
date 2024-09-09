@@ -13,7 +13,9 @@ router.post(
   auth(USER_Role.admin, USER_Role.user),
   UserControllers.cerateAdmin,
 );
-router.get('/:userId', UserControllers.getSingleUser);
+router.get('/', UserControllers.getAllUser);
+router.get('/:email', UserControllers.getSingleUser);
+router.get('/:userId', UserControllers.getSingleUserById);
 
 router.put(
   '/:userId',
