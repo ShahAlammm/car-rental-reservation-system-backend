@@ -22,12 +22,12 @@ const cerateAdmin = async (req: Request, res: Response) => {
 const getAllUser = async (req: Request, res: Response) => {
   const result = await UserServices.getAllUser();
   if (!result) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Cars API not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'Users API not found');
   }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cars retrieved successfully',
+    message: 'Users retrieved successfully',
     data: result,
   });
 };

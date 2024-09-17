@@ -5,16 +5,10 @@ import { TUser } from '../user/user.interface';
 import { User } from '../user/user.model';
 import { TLoginUser } from './auth.interface';
 import jwt from 'jsonwebtoken';
-// import { TBooking } from '../booking/booking.interface';
-// import Booking from '../booking/booking.model';
 import { isPasswordMatched } from './auth.utils';
 
 
 
-// const createBooking = async (payload: TBooking) => {
-//   const result = await Booking.create(payload);
-//   return result;
-// };
 
 //sign up
 const register = async (payload: TUser): Promise<any> => {

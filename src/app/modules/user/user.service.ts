@@ -13,7 +13,7 @@ const createAdmin = async (payload: TUser) => {
 };
 
 const getAllUser = async () => {
-  const result = await User.find(); //populate
+  const result = await User.find();
   return result;
 };
 
