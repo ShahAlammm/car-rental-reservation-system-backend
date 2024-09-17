@@ -24,5 +24,5 @@ https://github.com/ShahAlammm/car-rental-reservation-system-backend
 5. Start the server:
 
 ```typescript
- npm start:dev
+ npm run dev
 ```
